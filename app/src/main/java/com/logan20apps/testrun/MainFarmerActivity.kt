@@ -47,6 +47,19 @@ class MainFarmerActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
+            R.id.nav_dashboard->{
+                dashboard()
+            }
+            R.id.nav_inventory->{
+                supportActionBar?.title="Inventory"
+                nav_view.setCheckedItem(R.id.nav_inventory)
+                supportFragmentManager.beginTransaction().replace(R.id.fl_content,FarmerInventoryFragment()).commit()
+            }
+            R.id.nav_schedule->{
+                supportActionBar?.title="Schedule"
+                nav_view.setCheckedItem(R.id.nav_dashboard)
+                supportFragmentManager.beginTransaction().replace(R.id.fl_content,FarmerScheduleFragment()).commit()
+            }
             R.id.nav_logout->{
                 FirebaseAuth.getInstance().signOut()
                 startActivity(Intent(this@MainFarmerActivity, LoginActivity::class.java))
@@ -65,7 +78,7 @@ class MainFarmerActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
         return true
     }
 
-    private fun dashboard(){
+    fun dashboard(){
         supportActionBar?.title="Dashboard"
         nav_view.setCheckedItem(R.id.nav_dashboard)
         supportFragmentManager.beginTransaction().replace(R.id.fl_content,FarmerDashboardFragment()).commit()

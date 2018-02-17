@@ -9,10 +9,9 @@ import android.view.ViewGroup
 /**
  * Created by kwasi on 17/02/2018.
  */
-
-class FarmerDashboardFragment : Fragment(){
+class FarmerScheduleFragment :Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_farmer_dashboard,container,false)
+        val view = inflater.inflate(R.layout.fragment_farmer_schedule,container,false)
         return view
     }
 }

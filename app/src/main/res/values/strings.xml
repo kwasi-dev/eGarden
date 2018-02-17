@@ -13,4 +13,12 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+    <string-array name="array_quantities">
+        <item>Lb(s)</item>
+        <item>Kg(s)</item>
+        <item>Head(s)</item>
+        <item>Bunch(es)</item>
+        <item>Pack(s)</item>
+    </string-array>
 </resources>
