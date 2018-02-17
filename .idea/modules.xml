@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/TestRun.iml" filepath="$PROJECT_DIR$/TestRun.iml" />
+      <module fileurl="file://$PROJECT_DIR$/New.iml" filepath="$PROJECT_DIR$/New.iml" />
+      <module fileurl="file://C:\Users\sinea\Documents\New\TestRun.iml" filepath="C:\Users\sinea\Documents\New\TestRun.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\sinea\Documents\New\app\app.iml" filepath="C:\Users\sinea\Documents\New\app\app.iml" />
     </modules>
   </component>
 </project>
