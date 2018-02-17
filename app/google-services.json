@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "510936217249",
+    "firebase_url": "https://testrun-96fda.firebaseio.com",
+    "project_id": "testrun-96fda",
+    "storage_bucket": "testrun-96fda.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:510936217249:android:e9c3ba9cdcfaae76",
+        "android_client_info": {
+          "package_name": "com.logan20apps.testrun"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "510936217249-qfl59gqis7lu34kg2376p5ljpos2o7o7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.logan20apps.testrun",
+            "certificate_hash": "35c2a3ab03b6cec8233a4505e5638d3da023768e"
+          }
+        },
+        {
+          "client_id": "510936217249-8ainrvuno9mps59uvhdobqbmon4pmcdj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBL-Q2N3emXeoPcC2YRX_JZ0ZdVH0FTM88"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "510936217249-8ainrvuno9mps59uvhdobqbmon4pmcdj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

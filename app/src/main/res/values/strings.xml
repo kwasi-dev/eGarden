@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">TestRun</string>
+
+
+    <string-array name="array_coutries">
+        <item>Trinidad</item>
+        <item>Tobago</item>
+        <item>Grenada</item>
+    </string-array>
 </resources>
