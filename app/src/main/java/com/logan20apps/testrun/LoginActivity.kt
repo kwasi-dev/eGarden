@@ -3,6 +3,7 @@ package com.logan20apps.testrun
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.design.widget.TextInputEditText
 import android.support.v7.app.AlertDialog
 import android.view.LayoutInflater
 import android.widget.ProgressBar
@@ -13,6 +14,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_login.*
+import org.json.JSONObject
 
 class LoginActivity : AppCompatActivity() {
     private val auth : FirebaseAuth = FirebaseAuth.getInstance()
@@ -85,20 +87,68 @@ class LoginActivity : AppCompatActivity() {
         if (!dialog?.isShowing!! && param==0){
             dialog?.show()
         }
-        FirebaseDatabase.getInstance().reference.child("users").child(FirebaseAuth.getInstance().currentUser?.uid).child("usertype").addListenerForSingleValueEvent(object: ValueEventListener{
+        FirebaseDatabase.getInstance().reference.child("users").child(FirebaseAuth.getInstance().currentUser?.uid).addValueEventListener(object: ValueEventListener{
             override fun onCancelled(p0: DatabaseError?) {
                 dialog?.cancel()
             }
             override fun onDataChange(p0: DataSnapshot) {
                 dialog?.cancel()
-                when(p0.value.toString()){
-                    UserType.FARMER.toString()->{
-                        startActivity(Intent(this@LoginActivity,MainFarmerActivity::class.java))
-                        finish()
+                for (msgsnap in p0.children){
+                    when(msgsnap.key){
+                        "lastname"->{
+                            User.lname = msgsnap.value.toString()
+                        }
+                        "firstname"->{
+                            User.fname = msgsnap.value.toString()
+                        }
+                        "email"->{
+                            User.email=msgsnap.value.toString()
+                        }
+                        "inventory"->{
+                            val json = JSONObject(msgsnap.value.toString())
+                            val keys = json.keys()
+                            User.inventory.clear()
+                            for (key in keys){
+                                json.getJSONObject(key).put("key",key)
+                                User.inventory.add(FarmerInventoryItem.getObjFromJson(json.getJSONObject(key).toString()))
+                            }
+                        }
+                        "usertype"->{
+                            User.userType = UserType.valueOf(msgsnap.value.toString())
+                        }
+                        "messages"->{
+                            val json = JSONObject(msgsnap.value.toString())
+                            val keys = json.keys()
+                            for (key in keys){
+                                User.messages.put(FarmerInventoryItem.getObjFromJson(json.getJSONObject(key).toString()))
+                            }
+                        }
+                        "feedback"->{
+                            val json = JSONObject(msgsnap.value.toString())
+                            val keys = json.keys()
+                            for (key in keys){
+                                User.feedback.put(FarmerInventoryItem.getObjFromJson(json.getJSONObject(key).toString()))
+                            }
+                        }
+                        "schedule"->{
+                            val json = JSONObject(msgsnap.value.toString())
+                            val keys = json.keys()
+                            for (key in keys){
+                                User.schedule.put(FarmerInventoryItem.getObjFromJson(json.getJSONObject(key).toString()))
+                            }
+                        }
+                        "history"->{
+                            val json = JSONObject(msgsnap.value.toString())
+                            val keys = json.keys()
+                            for (key in keys){
+                                User.history.put(FarmerInventoryItem.getObjFromJson(json.getJSONObject(key).toString()))
+                            }
+                        }
                     }
                 }
+                startActivity(Intent(this@LoginActivity,MainFarmerActivity::class.java))
+                finish()
             }
-
         })
 
     }

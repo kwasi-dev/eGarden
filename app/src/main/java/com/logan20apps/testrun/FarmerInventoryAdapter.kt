@@ -2,6 +2,9 @@ package com.logan20apps.testrun
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
+import android.util.Base64
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -16,30 +19,19 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import org.json.JSONObject
 import org.w3c.dom.Text
+import android.graphics.Bitmap
+
+
 
 /**
  * Created by kwasi on 17/02/2018.
  */
 class FarmerInventoryAdapter(val context: Context) : BaseAdapter() {
-    var items : ArrayList<FarmerInventoryItem>
+    var items : ArrayList<FarmerInventoryItem> = User.inventory
+
     init {
-        items= arrayListOf()
-        FirebaseDatabase.getInstance().reference.child("users").child(FirebaseAuth.getInstance().currentUser?.uid).child("inventory").addListenerForSingleValueEvent(object: ValueEventListener {
-            override fun onCancelled(p0: DatabaseError?) {
-
-            }
-            override fun onDataChange(p0: DataSnapshot) {
-
-                val json = JSONObject(p0.value.toString())
-                var keys = json.keys()
-                for (key in keys){
-                    items.add(FarmerInventoryItem.getObjFromJson(json.getJSONObject(key).toString()))
-                }
-                this@FarmerInventoryAdapter.notifyDataSetChanged()
-
-            }
-        })
-
+        items = User.inventory
+        notifyDataSetChanged()
     }
     override fun getView(p0: Int, p1: View?, p2: ViewGroup?): View {
         var view = p1
@@ -48,12 +40,19 @@ class FarmerInventoryAdapter(val context: Context) : BaseAdapter() {
         }
 
         val item = getItem(p0)
-        view!!.findViewById<ImageView>(R.id.iv_image).setImageResource(R.drawable.lettuceicon)
+        val decodedString = Base64.decode(item.pictureStr, Base64.DEFAULT)
+        val decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
+        view!!.findViewById<ImageView>(R.id.iv_image).background=(BitmapDrawable(context.resources,decodedByte))
         view.findViewById<TextView>(R.id.tv_name).text=item.itemName
         view.findViewById<TextView>(R.id.tv_quantity).text=item.quantity.toString()
         view.findViewById<TextView>(R.id.tv_unit).text=item.unit
         view.findViewById<TextView>(R.id.tv_harvestdate).text=String.format("Harvested on: "+item.harvestedDate)
         view.findViewById<TextView>(R.id.tv_price).text=String.format("$%.2f",item.price)
+        if(item.isInMarket){
+            view.findViewById<ImageView>(R.id.iv_inMarket).visibility=View.VISIBLE
+        } else {
+            view.findViewById<ImageView>(R.id.iv_inMarket).visibility=View.INVISIBLE
+        }
 
         return view
     }

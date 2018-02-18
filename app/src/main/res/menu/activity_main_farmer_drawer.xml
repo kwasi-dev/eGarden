@@ -9,6 +9,10 @@
             android:icon="@drawable/ic_dashboard"
             android:title="Dashboard" />
         <item
+            android:id="@+id/nav_market"
+            android:icon="@drawable/ic_shopping_cart"
+            android:title="E-Market" />
+        <item
             android:id="@+id/nav_inventory"
             android:icon="@drawable/ic_menu_camera"
             android:title="Inventory" />

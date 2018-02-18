@@ -50,6 +50,10 @@ class MainFarmerActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
             R.id.nav_dashboard->{
                 dashboard()
             }
+            R.id.nav_market->{
+                supportActionBar?.title="E-Market"
+                nav_view.setCheckedItem(R.id.nav_inventory)
+            }
             R.id.nav_inventory->{
                 supportActionBar?.title="Inventory"
                 nav_view.setCheckedItem(R.id.nav_inventory)
@@ -59,6 +63,11 @@ class MainFarmerActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
                 supportActionBar?.title="Schedule"
                 nav_view.setCheckedItem(R.id.nav_dashboard)
                 supportFragmentManager.beginTransaction().replace(R.id.fl_content,FarmerScheduleFragment()).commit()
+            }
+            R.id.nav_profile->{
+                supportActionBar?.title="Profile"
+                nav_view.setCheckedItem(R.id.nav_profile)
+                supportFragmentManager.beginTransaction().replace(R.id.fl_content,FarmerProfileFragment()).commit()
             }
             R.id.nav_logout->{
                 FirebaseAuth.getInstance().signOut()

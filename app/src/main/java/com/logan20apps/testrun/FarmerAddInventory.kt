@@ -7,15 +7,12 @@ import android.support.design.widget.TextInputEditText
 import android.support.design.widget.TextInputLayout
 import android.support.v4.app.Fragment
 import android.util.Base64
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.database.FirebaseDatabase
-import kotlinx.android.synthetic.main.activity_register.*
 import java.io.ByteArrayOutputStream
 
 /**
@@ -28,10 +25,10 @@ class FarmerAddInventory :Fragment(){
         val tiets = arrayOf(view.findViewById<TextInputEditText>(R.id.tiet_itemname),view.findViewById<TextInputEditText>(R.id.tiet_itemamt),view.findViewById<TextInputEditText>(R.id.tiet_itemcost),view.findViewById<TextInputEditText>(R.id.tiet_harvestdate))
         val tils = arrayOf(view.findViewById<TextInputLayout>(R.id.til_itemname),view.findViewById<TextInputLayout>(R.id.til_itemamt),view.findViewById<TextInputLayout>(R.id.til_itemcost),view.findViewById<TextInputLayout>(R.id.til_harvestdate))
 
-
-
         view.findViewById<ImageView>(R.id.selectpicture).setOnClickListener{
-            Toast.makeText(context,"I should be choosing a picture here",Toast.LENGTH_SHORT).show()
+            val sit = StockImageChooser()
+            sit.v = it
+            sit.show(fragmentManager,"TAG")
         }
 
         view.findViewById<Button>(R.id.btn_saveinventory).setOnClickListener{
@@ -55,7 +52,7 @@ class FarmerAddInventory :Fragment(){
             val bytearr = baos.toByteArray()
             val image = Base64.encodeToString(bytearr,Base64.DEFAULT)
 
-            val item = FarmerInventoryItem(name,amount.toInt(),unit,"",harvestDay,cost.toDouble(),image)
+            val item = FarmerInventoryItem(name,amount.toInt(),unit,"",harvestDay,cost.toDouble(),image,false, FirebaseAuth.getInstance().currentUser!!.uid,"")
 
             val user = FirebaseAuth.getInstance().currentUser
             FirebaseDatabase.getInstance().reference.child("users").child(user?.uid).child("inventory").push().setValue(item.toJson().toString()).addOnCompleteListener{

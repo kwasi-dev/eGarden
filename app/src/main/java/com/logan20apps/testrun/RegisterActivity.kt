@@ -56,6 +56,10 @@ class RegisterActivity : AppCompatActivity() {
                             user?.updateProfile(UserProfileChangeRequest.Builder().setDisplayName(tiet_fname.text.toString()+" "+tiet_lname.text.toString()).build())
                             val map = HashMap<String, Any>()
                             map["usertype"] = result
+                            map["firstname"] = tiet_fname.text.toString()
+                            map["lastname"] = tiet_lname.text.toString()
+                            map["email"] = tiet_email.text.toString()
+                            map["displayname"] = tiet_fname.text.toString()+" "+tiet_lname.text.toString()
                             FirebaseDatabase.getInstance().reference.child("users").child(user?.uid).setValue(map)
                             startActivity(Intent(this@RegisterActivity,LoginActivity::class.java))
                             finish()
