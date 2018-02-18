@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://C:\Users\kwasi\Desktop\Logan20Apps\Android_Studio_Apps\Apps\TestRun\New.iml" filepath="C:\Users\kwasi\Desktop\Logan20Apps\Android_Studio_Apps\Apps\TestRun\New.iml" />
       <module fileurl="file://$PROJECT_DIR$/TestRun.iml" filepath="$PROJECT_DIR$/TestRun.iml" />
-      <module fileurl="file://C:\Users\sinea\Documents\New\TestRun.iml" filepath="C:\Users\sinea\Documents\New\TestRun.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\sinea\Documents\New\app\app.iml" filepath="C:\Users\sinea\Documents\New\app\app.iml" />
     </modules>
   </component>
 </project>

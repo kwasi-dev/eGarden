@@ -6,7 +6,7 @@
     android:id="@+id/fl_content"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.logan20apps.testrun.MainFarmerActivity"
+    tools:context="com.logan20apps.egarden.MainFarmerActivity"
     tools:showIn="@layout/app_bar_main_farmer">
 
 </FrameLayout>

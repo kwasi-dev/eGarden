@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TestRun</string>
+    <string name="app_name">E-Garden</string>
 
 
     <string-array name="array_coutries">
@@ -21,4 +21,5 @@
         <item>Bunch(es)</item>
         <item>Pack(s)</item>
     </string-array>
+    <string name="title_activity_main_user">MainUserActivity</string>
 </resources>

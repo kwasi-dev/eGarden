@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:510936217249:android:e9c3ba9cdcfaae76",
         "android_client_info": {
-          "package_name": "com.logan20apps.testrun"
+          "package_name": "com.logan20apps.egarden"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "510936217249-qfl59gqis7lu34kg2376p5ljpos2o7o7.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.logan20apps.testrun",
+            "package_name": "com.logan20apps.egarden",
             "certificate_hash": "35c2a3ab03b6cec8233a4505e5638d3da023768e"
           }
         },

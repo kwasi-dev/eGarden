@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.logan20apps.testrun">
+    package="com.logan20apps.egarden">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -12,19 +12,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".SplashActivity">
+        <activity android:name="com.logan20apps.egarden.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".ProfileSelectionActivity" />
+        <activity android:name="com.logan20apps.egarden.LoginActivity" />
+        <activity android:name="com.logan20apps.egarden.RegisterActivity" />
+        <activity android:name="com.logan20apps.egarden.ProfileSelectionActivity" />
         <activity
-            android:name=".MainFarmerActivity"
+            android:name="com.logan20apps.egarden.MainFarmerActivity"
             android:label="@string/title_activity_main_farmer"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name="com.logan20apps.egarden.MainUserActivity"
+            android:label="@string/title_activity_main_user"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
     </application>
 

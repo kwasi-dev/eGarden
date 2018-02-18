@@ -13,7 +13,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:background="@drawable/newdefaultprofile"
+        android:background="@drawable/leaf"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:id="@+id/iv_userimage"
@@ -48,6 +48,7 @@
             android:layout_height="wrap_content"
             android:background="#99ffffff"
             android:elevation="5dp"
+            android:id="@+id/ll_msgs"
             android:orientation="horizontal"
             android:padding="10dp"
 
@@ -81,6 +82,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:id="@+id/ll_emarket"
             android:background="#99ffffff"
             android:elevation="5dp"
             android:orientation="horizontal"
@@ -99,17 +101,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="Deliveries"
+                android:text="E-Market"
                 android:textSize="15sp" />
 
-            <TextView
-                android:id="@+id/tv_newdeliveries"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="right"
-                android:text="2"
-                android:textSize="25sp"
-                android:textStyle="italic" />
         </LinearLayout>
 
         <LinearLayout
@@ -118,6 +112,7 @@
             android:layout_marginTop="20dp"
             android:background="#99ffffff"
             android:elevation="5dp"
+            android:id="@+id/ll_invento"
             android:orientation="horizontal"
             android:padding="10dp"
             tools:layout_editor_absoluteY="193dp">
@@ -133,27 +128,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="Feedback"
+                android:text="Inventory"
                 android:textSize="15sp" />
 
-            <TextView
-                android:id="@+id/tv_feedback"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="end"
-                android:text="2"
-                android:textSize="25sp"
-                android:textStyle="italic" />
         </LinearLayout>
 
-        <Button
-            android:layout_width="140dp"
-            android:layout_height="50dp"
-            android:text="Farming Guides"
-            android:elevation="10dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/loginbuttonfinal"
-            android:layout_gravity="center_horizontal"/>
 
         <LinearLayout
             android:layout_width="match_parent"

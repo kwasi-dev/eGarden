@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/backgroundfinalwithlogo"
-    tools:context="com.logan20apps.testrun.LoginActivity">
+    tools:context="com.logan20apps.egarden.LoginActivity">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="368dp"
