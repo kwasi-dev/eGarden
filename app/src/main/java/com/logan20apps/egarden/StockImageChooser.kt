@@ -17,7 +17,7 @@ class StockImageChooser: DialogFragment(){
 
         val view = inflater.inflate(R.layout.dialogfragment_pic_chooser,container,false)
         val gv = view.findViewById<GridView>(R.id.gv_pics)
-        gv.adapter=StockImageChooserAdapter(context, this.v!!, this)
+        gv.adapter=StockImageChooserAdapter(context!!, this.v!!, this)
         return view;
     }
 

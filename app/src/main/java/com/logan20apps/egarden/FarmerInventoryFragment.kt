@@ -21,20 +21,20 @@ class FarmerInventoryFragment : Fragment(){
         val view = inflater.inflate(R.layout.fragment_farmer_inventory,container,false)
         val list = view.findViewById<ListView>(R.id.lv_farmerinventory)
         registerForContextMenu(list)
-        list.adapter=FarmerInventoryAdapter(context,filterenabled)
+        list.adapter=FarmerInventoryAdapter(this.context!!,filterenabled)
 
         if (filterenabled){
             view.findViewById<ImageButton>(R.id.ib_addinventory).visibility=View.INVISIBLE
         }
         view.findViewById<ImageButton>(R.id.ib_addinventory).setOnClickListener{
-            fragmentManager.beginTransaction().replace(R.id.fl_content,FarmerAddInventory()).commit()
+            fragmentManager!!.beginTransaction().replace(R.id.fl_content,FarmerAddInventory()).commit()
         }
         return view
     }
 
     override fun onCreateContextMenu(menu: ContextMenu?, v: View?, menuInfo: ContextMenu.ContextMenuInfo?) {
         super.onCreateContextMenu(menu, v, menuInfo)
-        val inflater = activity.menuInflater
+        val inflater = activity!!.menuInflater
         inflater.inflate(R.menu.context_menu,menu)
     }
 
@@ -44,7 +44,7 @@ class FarmerInventoryFragment : Fragment(){
             R.id.addtomarket->{
                 val user = FirebaseAuth.getInstance().currentUser
                 User.inventory[info.position].isInMarket=true
-                FirebaseDatabase.getInstance().reference.child("users").child(user?.uid).child("inventory").child(User.inventory[info.position].key).setValue(User.inventory[info.position].toJson().toString()).addOnCompleteListener{
+                FirebaseDatabase.getInstance().reference.child("users").child(user?.uid!!).child("inventory").child(User.inventory[info.position].key).setValue(User.inventory[info.position].toJson().toString()).addOnCompleteListener{
                     if (it.isSuccessful){
                         Toast.makeText(context,"Successfully added to market",Toast.LENGTH_SHORT).show()
                     }
@@ -67,7 +67,7 @@ class FarmerInventoryFragment : Fragment(){
             R.id.removefrommarker->{
                 val user = FirebaseAuth.getInstance().currentUser
                 User.inventory[info.position].isInMarket=false
-                FirebaseDatabase.getInstance().reference.child("users").child(user?.uid).child("inventory").child(User.inventory[info.position].key).setValue(User.inventory[info.position].toJson().toString()).addOnCompleteListener{
+                FirebaseDatabase.getInstance().reference.child("users").child(user?.uid!!).child("inventory").child(User.inventory[info.position].key).setValue(User.inventory[info.position].toJson().toString()).addOnCompleteListener{
                     if (it.isSuccessful){
                         Toast.makeText(context,"Successfully removed from market",Toast.LENGTH_SHORT).show()
                     }
@@ -91,7 +91,7 @@ class FarmerInventoryFragment : Fragment(){
             R.id.delete->{
                 val user = FirebaseAuth.getInstance().currentUser
                 User.inventory[info.position].isInMarket=false
-                FirebaseDatabase.getInstance().reference.child("users").child(user?.uid).child("inventory").child(User.inventory[info.position].key).removeValue().addOnCompleteListener{
+                FirebaseDatabase.getInstance().reference.child("users").child(user?.uid!!).child("inventory").child(User.inventory[info.position].key).removeValue().addOnCompleteListener{
                     if (it.isSuccessful){
                         Toast.makeText(context,"Successfully removed",Toast.LENGTH_SHORT).show()
                     }

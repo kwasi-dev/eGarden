@@ -38,11 +38,11 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == 1000) {
             if (resultCode == Activity.RESULT_OK) {
 
-                val result = data.getStringExtra("result")
+                val result = data!!.getStringExtra("result")
                 Log.w("ERR",result)
                 FirebaseAuth.getInstance().createUserWithEmailAndPassword(tiet_email.text.toString(),tiet_password.text.toString())
                     .addOnCompleteListener(this@RegisterActivity) { res ->
@@ -55,7 +55,7 @@ class RegisterActivity : AppCompatActivity() {
                             map["lastname"] = tiet_lname.text.toString()
                             map["email"] = tiet_email.text.toString()
                             map["displayname"] = tiet_fname.text.toString()+" "+tiet_lname.text.toString()
-                            FirebaseDatabase.getInstance().reference.child("users").child(user?.uid).setValue(map)
+                            FirebaseDatabase.getInstance().reference.child("users").child(user?.uid!!).setValue(map)
                             startActivity(Intent(this@RegisterActivity,LoginActivity::class.java))
                             finish()
                         }

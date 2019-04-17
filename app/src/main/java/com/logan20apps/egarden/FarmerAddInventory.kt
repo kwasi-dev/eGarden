@@ -55,7 +55,7 @@ class FarmerAddInventory :Fragment(){
             val item = FarmerInventoryItem(name,amount.toInt(),unit,"",harvestDay,cost.toDouble(),image,false, FirebaseAuth.getInstance().currentUser!!.uid,"")
 
             val user = FirebaseAuth.getInstance().currentUser
-            FirebaseDatabase.getInstance().reference.child("users").child(user?.uid).child("inventory").push().setValue(item.toJson().toString()).addOnCompleteListener{
+            FirebaseDatabase.getInstance().reference.child("users").child(user?.uid!!).child("inventory").push().setValue(item.toJson().toString()).addOnCompleteListener{
                 if (it.isSuccessful){
                     Toast.makeText(context,"Successfully added to inventory",Toast.LENGTH_SHORT).show()
                     (activity as MainFarmerActivity).dashboard()

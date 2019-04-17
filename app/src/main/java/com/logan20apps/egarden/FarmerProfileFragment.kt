@@ -27,10 +27,10 @@ class FarmerProfileFragment : Fragment(){
                         .addOnCompleteListener{
                             if (it.isSuccessful){
                                 val user = FirebaseAuth.getInstance().currentUser
-                                FirebaseDatabase.getInstance().reference.child("users").child(user?.uid).child("firstname").setValue(view.findViewById<TextInputEditText>(R.id.tiet_fname).text.toString())
-                                FirebaseDatabase.getInstance().reference.child("users").child(user?.uid).child("lastname").setValue(view.findViewById<TextInputEditText>(R.id.tiet_lname).text.toString())
-                                FirebaseDatabase.getInstance().reference.child("users").child(user?.uid).child("email").setValue(view.findViewById<TextInputEditText>(R.id.tiet_email).text.toString())
-                                FirebaseDatabase.getInstance().reference.child("users").child(user?.uid).child("displayname").setValue(view.findViewById<TextInputEditText>(R.id.tiet_fname).text.toString() +" "+view.findViewById<TextInputEditText>(R.id.tiet_lname).text.toString())
+                                FirebaseDatabase.getInstance().reference.child("users").child(user?.uid!!).child("firstname").setValue(view.findViewById<TextInputEditText>(R.id.tiet_fname).text.toString())
+                                FirebaseDatabase.getInstance().reference.child("users").child(user?.uid!!).child("lastname").setValue(view.findViewById<TextInputEditText>(R.id.tiet_lname).text.toString())
+                                FirebaseDatabase.getInstance().reference.child("users").child(user?.uid!!).child("email").setValue(view.findViewById<TextInputEditText>(R.id.tiet_email).text.toString())
+                                FirebaseDatabase.getInstance().reference.child("users").child(user?.uid!!).child("displayname").setValue(view.findViewById<TextInputEditText>(R.id.tiet_fname).text.toString() +" "+view.findViewById<TextInputEditText>(R.id.tiet_lname).text.toString())
                                 Toast.makeText(context,"Change successful!",Toast.LENGTH_SHORT).show()
                             }
                             else{

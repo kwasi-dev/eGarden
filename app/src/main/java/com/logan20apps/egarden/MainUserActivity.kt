@@ -37,7 +37,7 @@ class MainUserActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
         emarket()
 
         FirebaseDatabase.getInstance().reference.child("market").addValueEventListener(object: ValueEventListener {
-            override fun onCancelled(p0: DatabaseError?) {
+            override fun onCancelled(p0: DatabaseError) {
             }
             override fun onDataChange(p0: DataSnapshot) {
                 for (msgsnap in p0.children) {

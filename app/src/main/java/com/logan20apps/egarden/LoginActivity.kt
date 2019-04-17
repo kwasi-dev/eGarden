@@ -84,10 +84,12 @@ class LoginActivity : AppCompatActivity() {
             dialog?.show()
         }
 
-        FirebaseDatabase.getInstance().reference.child("users").child(FirebaseAuth.getInstance().currentUser?.uid).addValueEventListener(object: ValueEventListener{
-            override fun onCancelled(p0: DatabaseError?) {
+        FirebaseDatabase.getInstance().reference.child("users").child(FirebaseAuth.getInstance().currentUser?.uid!!).addValueEventListener(object: ValueEventListener{
+            override fun onCancelled(p0: DatabaseError) {
                 dialog?.cancel()
+
             }
+
             override fun onDataChange(p0: DataSnapshot) {
                 dialog?.cancel()
                 for (msgsnap in p0.children){

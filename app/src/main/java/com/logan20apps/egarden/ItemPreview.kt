@@ -31,9 +31,9 @@ class ItemPreview :DialogFragment() {
         var v = inflater.inflate(R.layout.item_preview,container,false)
 
         FirebaseDatabase.getInstance().reference.child("users").child(item.userid).addListenerForSingleValueEvent(object:ValueEventListener{
-            override fun onCancelled(p0: DatabaseError?) {
-
+            override fun onCancelled(p0: DatabaseError) {
             }
+
 
             override fun onDataChange(p0: DataSnapshot) {
                 for (msgsnap in p0.children){
@@ -81,7 +81,7 @@ class ItemPreview :DialogFragment() {
 
         v.findViewById<Button>(R.id.btn_buynow).setOnClickListener {
             val hist = History(item.unit,v.findViewById<TextInputEditText>(R.id.tiet_quantity).text.toString().toInt(),item.itemName, SimpleDateFormat("yyyy-MM-dd").format(Date()),v.findViewById<TextInputEditText>(R.id.tiet_total).text.toString().replace('$',' ').toDouble())
-            FirebaseDatabase.getInstance().reference.child("users").child(FirebaseAuth.getInstance().currentUser?.uid).child("history").push().setValue(hist.toJson().toString())
+            FirebaseDatabase.getInstance().reference.child("users").child(FirebaseAuth.getInstance().currentUser?.uid!!).child("history").push().setValue(hist.toJson().toString())
             this@ItemPreview.dismiss()
             Toast.makeText(activity,"Purchase completed successfully",Toast.LENGTH_SHORT).show()
         }

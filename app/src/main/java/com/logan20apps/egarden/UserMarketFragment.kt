@@ -15,7 +15,7 @@ class UserMarketFragment :Fragment(){
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_user_market,container,false)
         val gv = view.findViewById<GridView>(R.id.gv_market)
-        gv.adapter = UserMarketAdapter(activity)
+        gv.adapter = UserMarketAdapter(activity!!)
         return view
     }
 }
